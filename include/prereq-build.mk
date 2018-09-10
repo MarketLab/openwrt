@@ -180,6 +180,10 @@ $(eval $(call SetupHostCommand,rsync,Please install 'rsync', \
 $(eval $(call SetupHostCommand,which,Please install 'which', \
 	which which | grep which))
 
+$(eval $(call SetupHostCommand,rmdir,Please install GNU 'rmdir', \
+	grmdir --version 2>&1 | grep coreutils, \
+	rmdir --version 2>&1 | grep coreutils))
+
 $(STAGING_DIR_HOST)/bin/mkhash: $(SCRIPT_DIR)/mkhash.c
 	mkdir -p $(dir $@)
 	$(CC) -O2 -I$(TOPDIR)/tools/include -o $@ $<
