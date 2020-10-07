@@ -1,0 +1,12 @@
+Index: linux-4.14.172/arch/mips/ath79/prom.c
+===================================================================
+--- linux-4.14.172.orig/arch/mips/ath79/prom.c
++++ linux-4.14.172/arch/mips/ath79/prom.c
+@@ -156,6 +156,7 @@ void __init prom_init(void)
+ 	    strstr(arcs_cmdline, "board=450") ||
+ 	    strstr(arcs_cmdline, "board=493") ||
+ 	    strstr(arcs_cmdline, "board=951G") ||
++	    strstr(arcs_cmdline, "board=951HnD") ||
+ 	    strstr(arcs_cmdline, "board=H951L") ||
+ 	    strstr(arcs_cmdline, "board=952-hb") ||
+ 	    strstr(arcs_cmdline, "board=953gs") ||
