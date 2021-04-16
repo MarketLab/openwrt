@@ -2,4 +2,4 @@ src-git packages https://github.com/MarketLab/packages.git;mkl-19.07
 src-git luci https://git.openwrt.org/project/luci.git;openwrt-19.07
 src-git routing https://git.openwrt.org/feed/routing.git;openwrt-19.07
 src-git telephony https://git.openwrt.org/feed/telephony.git;openwrt-19.07
-src-git loee https://gitlab.marketlab24.pl/rnd/common/vpufeed.git
+src-git loee git@gitlab.marketlab24.pl:rnd/common/openwrt/vpufeed.git
