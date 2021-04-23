@@ -8,6 +8,13 @@ build:
   image:
     name: mklhub.azurecr.io/rnd/common/openwrt-builder:latest
     entrypoint: [""]
+  before_script:
+    - eval $(ssh-agent -s)
+    - cat "$SSH_PRIVATE_KEY" | base64 -d | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - cat "$SSH_KNOWN_HOSTS" | base64 -d > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
   script:
     - ./build config-VPU.seed
   only:
