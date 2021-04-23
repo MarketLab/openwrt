@@ -1,0 +1,12 @@
+stages:
+  - build
+
+build:
+  stage: build
+  image: mklhub.azurecr.io/rnd/common/openwrt-builder:latest
+  entrypoint: [""]
+  script:
+    - ./build config-VPU.seed
+  only:
+    - ci-tests
+
