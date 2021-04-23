@@ -3,6 +3,8 @@ stages:
 
 build:
   stage: build
+  tags:
+    - openwrt
   image:
     name: mklhub.azurecr.io/rnd/common/openwrt-builder:latest
     entrypoint: [""]
