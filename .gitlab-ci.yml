@@ -20,11 +20,13 @@ build:
   only:
     - ci-tests
   artifacts:
+    when: always
     paths:
       - bin/
     expire_in: 1 day
   cache:
     key: "$CI_COMMIT_REF_SLUG"
+    when: always
     paths:
       - dl
       - feeds
