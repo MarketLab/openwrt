@@ -1,0 +1,41 @@
+stages:
+  - build
+
+.base:
+  stage: build
+  tags:
+    - openwrt
+  image:
+    name: mklhub.azurecr.io/rnd/common/openwrt-builder:latest
+    entrypoint: [""]
+  before_script:
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  only:
+    - mkl-19.07
+  artifacts:
+    when: always
+    paths:
+      - bin/
+    expire_in: 30 days
+  cache:
+    key: "$CI_COMMIT_REF_SLUG"
+    when: always
+    paths:
+      - dl
+      - feeds
+      - staging_dir
+
+build-VPU:
+  extends: .base
+  script:
+    - ./build config-VPU.seed
+
+build-VPU-failover:
+  extends: .base
+  script:
+    - ./build config-VPU-failover.seed
