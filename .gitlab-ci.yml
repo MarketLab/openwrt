@@ -1,7 +1,7 @@
 stages:
   - build
 
-build:
+.base:
   stage: build
   tags:
     - openwrt
@@ -15,10 +15,8 @@ build:
     - chmod 700 ~/.ssh
     - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
     - chmod 644 ~/.ssh/known_hosts
-  script:
-    - ./build config-VPU.seed
   only:
-    - ci-tests
+    - mkl-19.07
   artifacts:
     when: always
     paths:
@@ -31,3 +29,13 @@ build:
       - dl
       - feeds
       - staging_dir
+
+build-VPU:
+  extends: .base
+  script:
+    - ./build config-VPU.seed
+
+build-VPU-mwan:
+  extends: .base
+  script:
+    - ./build config-VPU-mwan.seed
