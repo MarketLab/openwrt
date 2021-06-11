@@ -34,8 +34,3 @@ build-VPU:
   extends: .base
   script:
     - ./build config-VPU.seed
-
-build-VPU-failover:
-  extends: .base
-  script:
-    - ./build config-VPU-failover.seed
