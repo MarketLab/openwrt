@@ -1023,7 +1023,7 @@ define Device/netgear_r6350
   SERCOMM_HWID := CHJ
   SERCOMM_HWVER := A001
   SERCOMM_SWVER := 0x0052
-  IMAGE_SIZE := 40960k
+  IMAGE_SIZE := 65536k
   DEVICE_PACKAGES += kmod-mt7615e kmod-mt7615-firmware
 endef
 TARGET_DEVICES += netgear_r6350
